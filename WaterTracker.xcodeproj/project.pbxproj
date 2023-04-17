@@ -14,6 +14,8 @@
 		931F2B4129E7C59100129EF1 /* WaterTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 931F2B3F29E7C59100129EF1 /* WaterTracker.xcdatamodeld */; };
 		931F2B4329E7C59300129EF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 931F2B4229E7C59300129EF1 /* Assets.xcassets */; };
 		931F2B4629E7C59300129EF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 931F2B4429E7C59300129EF1 /* LaunchScreen.storyboard */; };
+		931F2B5429EDBA5500129EF1 /* History+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931F2B5229EDBA5500129EF1 /* History+CoreDataClass.swift */; };
+		931F2B5529EDBA5500129EF1 /* History+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931F2B5329EDBA5500129EF1 /* History+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		931F2B4229E7C59300129EF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		931F2B4529E7C59300129EF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		931F2B4729E7C59300129EF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		931F2B5229EDBA5500129EF1 /* History+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "History+CoreDataClass.swift"; sourceTree = "<group>"; };
+		931F2B5329EDBA5500129EF1 /* History+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "History+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 		931F2B3529E7C59100129EF1 /* WaterTracker */ = {
 			isa = PBXGroup;
 			children = (
+				931F2B5629EDBA5A00129EF1 /* Model */,
 				931F2B3629E7C59100129EF1 /* AppDelegate.swift */,
 				931F2B3829E7C59100129EF1 /* SceneDelegate.swift */,
 				931F2B3A29E7C59100129EF1 /* ViewController.swift */,
@@ -68,6 +73,15 @@
 				931F2B3F29E7C59100129EF1 /* WaterTracker.xcdatamodeld */,
 			);
 			path = WaterTracker;
+			sourceTree = "<group>";
+		};
+		931F2B5629EDBA5A00129EF1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				931F2B5229EDBA5500129EF1 /* History+CoreDataClass.swift */,
+				931F2B5329EDBA5500129EF1 /* History+CoreDataProperties.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +157,8 @@
 			files = (
 				931F2B4129E7C59100129EF1 /* WaterTracker.xcdatamodeld in Sources */,
 				931F2B3B29E7C59100129EF1 /* ViewController.swift in Sources */,
+				931F2B5529EDBA5500129EF1 /* History+CoreDataProperties.swift in Sources */,
+				931F2B5429EDBA5500129EF1 /* History+CoreDataClass.swift in Sources */,
 				931F2B3729E7C59100129EF1 /* AppDelegate.swift in Sources */,
 				931F2B3929E7C59100129EF1 /* SceneDelegate.swift in Sources */,
 			);

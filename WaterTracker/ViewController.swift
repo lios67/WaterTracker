@@ -12,15 +12,11 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var history:[WaterHistory]=[
-        WaterHistory(date: "04-04-2023", volume: 9.0),
-        WaterHistory(date: "07-04-2023", volume: 12.0),
-        WaterHistory(date: "10-04-2023", volume: 19.0),
-        WaterHistory(date: "01-04-2023", volume: 92.0),
-        WaterHistory(date: "15-04-2023", volume: 93.0),
-        WaterHistory(date: "09-04-2023", volume: 39.0),
-    ]
+    let context=(UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+    var history:[History]=[]
     
+    /*
     func bubbleSort(){
         for i in 0..<history.count{
             for k in 1..<history.count-i{
@@ -32,15 +28,30 @@ class ViewController: UIViewController {
             }
         }
         history.reverse()
-    }
+    }*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         title = "History"
-        bubbleSort()
+        //bubbleSort()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        fetchHistory()
     }
+    
+    func fetchHistory() {
+        //fetch data from Core Data to the tableview
+        do{
+            self.history = try context.fetch(History.fetchRequest())
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        catch{
+            print("Unable to fetch Water History")
+        }
+    }
+
     
     func getCurrentDate() -> String{
         let date = NSDate()
@@ -68,12 +79,20 @@ class ViewController: UIViewController {
                     let currentValue = history.first(where: {$0.date==date})?.volume
                     history.first(where: {$0.date==date})?.volume = currentValue! + volume
                 }else{
-                    let newEntry = WaterHistory(date: date, volume: volume)
-                    self.history.append(newEntry)
-                    
+                    //Create a new History
+                    let newHistory = History(context: self.context)
+                    newHistory.volume=volume
+                    newHistory.date=date
+                    //save the data to Core Data
+                    do{
+                        try self.context.save()
+                    }catch{
+                        print("Unable to Save Water History")
+                    }
                 }
-                bubbleSort()
-                self.tableView.reloadData()
+                //bubbleSort()
+                //self.tableView.reloadData()
+                fetchHistory()
             }else{
                 // The input string is not a valid Double value
                 print("The input string is not a double.")
@@ -117,11 +136,11 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let myData=history[indexPath.row]
-        let cell = subtitleCell(text: String(myData.volume) + "mL", detailText: myData.date)
+        let cell = subtitleCell(text: String(myData.volume) + "mL", detailText: myData.date!)
         return cell
     }
 }
-
+/*
 class WaterHistory{
     var date: String
     var volume: Double
@@ -129,5 +148,5 @@ class WaterHistory{
         self.date=date
         self.volume=volume
     }
-}
+}*/
 
