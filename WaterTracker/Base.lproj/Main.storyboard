@@ -38,7 +38,7 @@
                     <navigationItem key="navigationItem" id="7me-eu-SMj">
                         <barButtonItem key="rightBarButtonItem" title="Add" image="plus" catalog="system" id="A6z-2E-EHj">
                             <connections>
-                                <action selector="addName:" destination="BYZ-38-t0r" id="wLD-uG-XI4"/>
+                                <action selector="addVolume:" destination="BYZ-38-t0r" id="UUa-s5-VU8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

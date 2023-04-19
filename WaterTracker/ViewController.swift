@@ -16,20 +16,6 @@ class ViewController: UIViewController {
         
     var history:[History]=[]
     
-    /*
-    func bubbleSort(){
-        for i in 0..<history.count{
-            for k in 1..<history.count-i{
-                if history[k].date<history[k-1].date{
-                    let temp: WaterHistory = history[k-1]
-                    history[k-1]=history[k]
-                    history[k]=temp
-                }
-            }
-        }
-        history.reverse()
-    }*/
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -52,7 +38,6 @@ class ViewController: UIViewController {
         }
     }
 
-    
     func getCurrentDate() -> String{
         let date = NSDate()
         let dateFormatter = DateFormatter()
@@ -60,7 +45,7 @@ class ViewController: UIViewController {
         return dateFormatter.string(from: date as Date)
     }
 
-    @IBAction func addName(_ sender: UIBarButtonItem) {
+    @IBAction func addVolume(_ sender: UIBarButtonItem) {
         // Declare Alert message
         let alert = UIAlertController(title: "New Amount", message: "Add a new amount", preferredStyle: .alert)
         // Create Add/Save button with action handler to accesss the data from text field
@@ -70,11 +55,7 @@ class ViewController: UIViewController {
                 }
             //
             if let volume = Double(waterVolume) {
-                // The input string is a valid Double value
-                print("The input string is a double: \(volume)")
                 let date = getCurrentDate()
-                print(date)
-                print(history.count)
                 if history.contains(where: {$0.date==date}) {
                     let currentValue = history.first(where: {$0.date==date})?.volume
                     history.first(where: {$0.date==date})?.volume = currentValue! + volume
@@ -90,12 +71,8 @@ class ViewController: UIViewController {
                         print("Unable to Save Water History")
                     }
                 }
-                //bubbleSort()
-                //self.tableView.reloadData()
                 fetchHistory()
             }else{
-                // The input string is not a valid Double value
-                print("The input string is not a double.")
                 // Create new Alert when the input is not a double
                 let errorMessage = UIAlertController(title: "ERROR", message: "A Number Was Not Entered", preferredStyle: .alert)
                 // Create OK button with action handler
@@ -118,11 +95,9 @@ class ViewController: UIViewController {
         alert.addAction(cancelAction)
         present(alert, animated: true)
     }
-    
 }
 
 extension ViewController: UITableViewDataSource {
-  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return history.count
     }
@@ -133,20 +108,9 @@ extension ViewController: UITableViewDataSource {
         cell.detailTextLabel?.text = detailText
         return cell
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let myData=history[indexPath.row]
         let cell = subtitleCell(text: String(myData.volume) + "mL", detailText: myData.date!)
         return cell
     }
 }
-/*
-class WaterHistory{
-    var date: String
-    var volume: Double
-    init(date: String, volume: Double){
-        self.date=date
-        self.volume=volume
-    }
-}*/
-
