@@ -1,6 +1,6 @@
 # WaterTracker
 
-Version 1 of the WaterTracker App
+Final Version of the WaterTracker App
 
 Uses: A mobile application that enables users to track their daily water intake and receive reminders to drink water throughout the day. This project required me to design the user interface, implement the backend, and ensure the data storage and retrieval functioned correctly.
 
