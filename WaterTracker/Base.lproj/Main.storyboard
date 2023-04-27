@@ -4,6 +4,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,7 +21,10 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dtS-tR-obx">
                                 <rect key="frame" x="0.0" y="140" width="414" height="756"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <color key="tintColor" name="AccentColor"/>
+                                <color key="sectionIndexColor" systemColor="labelColor"/>
+                                <color key="sectionIndexBackgroundColor" systemColor="systemTealColor"/>
                                 <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="Q3r-Bi-yVl"/>
@@ -27,7 +32,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemTealColor"/>
                         <constraints>
                             <constraint firstItem="dtS-tR-obx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3rK-y3-vRQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dtS-tR-obx" secondAttribute="trailing" id="IwO-uD-AeV"/>
@@ -36,7 +41,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7me-eu-SMj">
-                        <barButtonItem key="rightBarButtonItem" title="Add" image="plus" catalog="system" id="A6z-2E-EHj">
+                        <barButtonItem key="backBarButtonItem" title="    " id="t3a-6E-LL5"/>
+                        <barButtonItem key="leftBarButtonItem" title="settings" id="6b5-yB-G1V">
+                            <imageReference key="image" image="gear" catalog="system" symbolScale="large"/>
+                            <color key="tintColor" systemColor="labelColor"/>
+                            <connections>
+                                <segue destination="hKO-jm-b52" kind="show" id="1Pk-j7-WDF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="A6z-2E-EHj">
+                            <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
+                            <color key="tintColor" systemColor="labelColor"/>
                             <connections>
                                 <action selector="addVolume:" destination="BYZ-38-t0r" id="UUa-s5-VU8"/>
                             </connections>
@@ -49,6 +64,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="897.10144927536237" y="56.919642857142854"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="hc2-rQ-rfI">
+            <objects>
+                <viewController id="hKO-jm-b52" customClass="SettingsViewController" customModule="WaterTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="272-BC-Vdb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zpu-S2-9zo">
+                                <rect key="frame" x="96" y="217" width="223" height="55"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add Notification">
+                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="addNotification:" destination="hKO-jm-b52" eventType="touchUpInside" id="iat-5K-Vgm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaS-lR-GW7">
+                                <rect key="frame" x="96" y="516" width="223" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Stop Notification">
+                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="stopNotification:" destination="hKO-jm-b52" eventType="touchUpInside" id="TQX-fu-N96"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCp-sa-SZb">
+                                <rect key="frame" x="96" y="357" width="223" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Notification Status">
+                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="notificationStatus:" destination="hKO-jm-b52" eventType="touchUpInside" id="x9f-rO-ony"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8SW-1a-Z1o"/>
+                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="ghR-Qc-vhy"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gf9-aa-yWD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1708.6956521739132" y="56.919642857142854"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LxW-gE-1gs">
@@ -70,9 +141,16 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gear" catalog="system" width="128" height="119"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

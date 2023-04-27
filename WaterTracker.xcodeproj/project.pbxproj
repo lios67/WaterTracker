@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		930887EF29F466AC00512563 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930887EE29F466AC00512563 /* SettingsViewController.swift */; };
 		931F2B3729E7C59100129EF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931F2B3629E7C59100129EF1 /* AppDelegate.swift */; };
 		931F2B3929E7C59100129EF1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931F2B3829E7C59100129EF1 /* SceneDelegate.swift */; };
 		931F2B3B29E7C59100129EF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931F2B3A29E7C59100129EF1 /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		930887EE29F466AC00512563 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		931F2B3329E7C59100129EF1 /* WaterTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		931F2B3629E7C59100129EF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		931F2B3829E7C59100129EF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				931F2B4429E7C59300129EF1 /* LaunchScreen.storyboard */,
 				931F2B4729E7C59300129EF1 /* Info.plist */,
 				931F2B3F29E7C59100129EF1 /* WaterTracker.xcdatamodeld */,
+				930887EE29F466AC00512563 /* SettingsViewController.swift */,
 			);
 			path = WaterTracker;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 			files = (
 				931F2B4129E7C59100129EF1 /* WaterTracker.xcdatamodeld in Sources */,
 				931F2B3B29E7C59100129EF1 /* ViewController.swift in Sources */,
+				930887EF29F466AC00512563 /* SettingsViewController.swift in Sources */,
 				931F2B5529EDBA5500129EF1 /* History+CoreDataProperties.swift in Sources */,
 				931F2B5429EDBA5500129EF1 /* History+CoreDataClass.swift in Sources */,
 				931F2B3729E7C59100129EF1 /* AppDelegate.swift in Sources */,

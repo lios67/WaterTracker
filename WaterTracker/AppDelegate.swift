@@ -7,14 +7,28 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
-
+    func setCategories(){
+        let clearRepeatAction = UNNotificationAction(
+            identifier: "clear.repeat.action",
+            title: "Stop Repeat",
+            options: [])
+        let waterCategory = UNNotificationCategory(
+            identifier: "water.reminder.category",
+            actions: [clearRepeatAction],
+            intentIdentifiers: [],
+            options: [])
+        UNUserNotificationCenter.current().setNotificationCategories([waterCategory])
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UNUserNotificationCenter.current().delegate = self
+        setCategories()
         return true
     }
 
@@ -76,6 +90,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
 

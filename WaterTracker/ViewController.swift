@@ -20,24 +20,24 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         title = "History"
-        //bubbleSort()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         fetchHistory()
     }
     
     func fetchHistory() {
         //fetch data from Core Data to the tableview
-        do{
-            self.history = try context.fetch(History.fetchRequest())
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "History")
+        let sort = NSSortDescriptor(key: "date", ascending: false)
+        request.sortDescriptors = [sort]
+        do {
+            history = try context.fetch(request) as! [History]
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-        }
-        catch{
+        } catch {
             print("Unable to fetch Water History")
         }
     }
-
     func getCurrentDate() -> String{
         let date = NSDate()
         let dateFormatter = DateFormatter()
@@ -53,7 +53,7 @@ class ViewController: UIViewController {
             [unowned self] action in guard let textField = alert.textFields?.first, let waterVolume = textField.text else {
                     return
                 }
-            //
+            //Check if there is already an entry
             if let volume = Double(waterVolume) {
                 let date = getCurrentDate()
                 if history.contains(where: {$0.date==date}) {
@@ -85,7 +85,6 @@ class ViewController: UIViewController {
                 self.present(errorMessage, animated: true)
             }
         }
-        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         // Add text field in the alert text box
         alert.addTextField(configurationHandler: { textField in
@@ -111,6 +110,8 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let myData=history[indexPath.row]
         let cell = subtitleCell(text: String(myData.volume) + "mL", detailText: myData.date!)
+        cell.backgroundColor = UIColor.systemTeal
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 20)
         return cell
     }
 }
